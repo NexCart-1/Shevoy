@@ -1,0 +1,11 @@
+<svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shevoyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="10" width="40" height="40" rx="12" fill="url(#shevoyGradient)"/>
+  <path d="M13 32c0-3 2.5-5 6-5h2c1.4 0 2-0.7 2-1.6 0-1-0.8-1.6-2.2-1.6h-6.4v-4.8h6.8c4.4 0 7.2 2.3 7.2 6 0 3-2.3 5-5.8 5h-2.2c-1.5 0-2.2 0.7-2.2 1.7 0 1.1 0.9 1.7 2.4 1.7h7v4.8h-7.4c-4.5 0-7.2-2.4-7.2-6.2z" fill="white"/>
+  <text x="52" y="40" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="30" fill="url(#shevoyGradient)" letter-spacing="-0.5">Shevoy</text>
+</svg>
