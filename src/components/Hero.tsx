@@ -1,90 +1,125 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Truck, BadgePercent, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Award, ShieldCheck, Truck, IndianRupee, Package, RotateCcw, Tag } from 'lucide-react';
 
 export default function Hero() {
   const scrollToProducts = () => {
     document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const trustPoints = [
+    { icon: Award, label: 'Premium', sub: 'Quality' },
+    { icon: ShieldCheck, label: 'Trusted', sub: 'Brand' },
+    { icon: Truck, label: 'Fast & Safe', sub: 'Delivery' },
+    { icon: IndianRupee, label: 'Cash On', sub: 'Delivery' },
+  ];
+
+  const bottomStrip = [
+    { icon: Package, title: 'COD Available', sub: 'Pay at your doorstep' },
+    { icon: RotateCcw, title: 'Easy Returns', sub: 'Hassle free returns' },
+    { icon: Tag, title: 'Best Prices', sub: 'Quality at best prices' },
+  ];
+
   return (
-    <section className="relative w-full min-h-[92vh] sm:min-h-[85vh] flex flex-col items-center justify-center pt-20 sm:pt-24 overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://i.ibb.co/1t8XbRPM/4910241.jpg"
-          alt="Shevoy Hero"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/40 to-slate-50" />
+    <section className="relative w-full pt-16 sm:pt-20 bg-ink overflow-hidden">
+      <div className="grid lg:grid-cols-2 min-h-[560px] sm:min-h-[640px]">
+        {/* Left: text content */}
+        <div className="relative z-10 flex flex-col justify-center px-6 sm:px-10 lg:px-16 py-12 sm:py-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3 mb-5"
+          >
+            <span className="h-px w-8 bg-gold-dark/70" />
+            <span className="text-gold text-xs sm:text-sm tracking-[0.25em] font-semibold uppercase">New Collection</span>
+            <span className="h-px w-8 bg-gold-dark/70" />
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="font-display font-extrabold leading-[1.05] bg-gradient-to-r from-gold-dark via-gold to-silver bg-clip-text text-transparent text-4xl sm:text-5xl lg:text-6xl"
+          >
+            Timeless<br />Elegance
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="font-script text-gold text-3xl sm:text-4xl mt-1"
+          >
+            crafted for you
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-4 text-silver-light text-base sm:text-lg font-light"
+          >
+            Premium Sarees for Every Occasion
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-6"
+          >
+            {trustPoints.map((item, i) => (
+              <div key={i} className="flex flex-col items-center text-center gap-2">
+                <item.icon size={24} className="text-gold" />
+                <span className="text-[11px] sm:text-xs text-silver-light font-semibold tracking-wide uppercase leading-tight">
+                  {item.label}<br />{item.sub}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-9"
+          >
+            <button
+              onClick={scrollToProducts}
+              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-gold-dark to-gold hover:from-bronze hover:to-gold-dark text-ink rounded-full font-bold text-sm sm:text-base shadow-xl shadow-gold/20 transition-all hover:scale-105 active:scale-95"
+            >
+              Shop Now
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </motion.div>
+        </div>
+
+        {/* Right: photo */}
+        <div className="relative min-h-[340px] lg:min-h-0">
+          <img
+            src="/hero-model.jpg"
+            alt="Shevoy - Timeless Elegance Saree Collection"
+            className="absolute inset-0 w-full h-full object-cover object-[70%_center]"
+          />
+          {/* blend curve into dark panel */}
+          <div className="absolute inset-y-0 left-0 w-24 sm:w-32 bg-gradient-to-r from-ink to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-ink/60 to-transparent lg:hidden" />
+        </div>
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs sm:text-sm font-medium mb-6"
-        >
-          <BadgePercent size={16} className="text-amber-300" />
-          <span>Best Deals Live Now — COD Available All Over India</span>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-tight drop-shadow-lg"
-        >
-          Shop Smart,<br />
-          <span className="bg-gradient-to-r from-amber-300 to-orange-400 bg-clip-text text-transparent">
-            Save Big
-          </span>
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-5 text-base sm:text-xl text-slate-100 max-w-2xl mx-auto font-light"
-        >
-          Shevoy brings you trending products at unbeatable prices. Cash on Delivery, secure prepaid options, and ₹99 extra off on prepaid orders.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <button
-            onClick={scrollToProducts}
-            className="group px-8 py-4 bg-gradient-to-r from-gold-dark to-gold hover:from-bronze hover:to-gold-dark text-white rounded-full font-bold text-base sm:text-lg shadow-xl shadow-gold/30 transition-all hover:scale-105 active:scale-95 flex items-center gap-2"
-          >
-            Shop Now
-            <ArrowDown size={18} className="group-hover:translate-y-1 transition-transform" />
-          </button>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
-        >
-          {[
-            { icon: Truck, text: 'Free Delivery Available' },
-            { icon: ShieldCheck, text: 'Secure Payments' },
-            { icon: BadgePercent, text: '₹99 Off on Prepaid' }
-          ].map((item, idx) => (
-            <div
-              key={idx}
-              className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 text-white"
-            >
-              <item.icon size={22} className="text-amber-300 shrink-0" />
-              <span className="text-sm font-medium">{item.text}</span>
+      {/* bottom trust strip */}
+      <div className="relative z-10 border-t border-gold/15 bg-ink">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-4 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6">
+          {bottomStrip.map((item, i) => (
+            <div key={i} className="flex items-center gap-3">
+              <item.icon size={20} className="text-gold shrink-0" />
+              <div>
+                <p className="text-silver-light text-sm font-semibold leading-tight">{item.title}</p>
+                <p className="text-silver-dark text-xs leading-tight">{item.sub}</p>
+              </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
