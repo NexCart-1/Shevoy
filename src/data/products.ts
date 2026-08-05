@@ -80,6 +80,61 @@ export const products: Product[] = [
     category: 'Men Jewellery',
     image: 'https://i.ibb.co/W42WmyQ9/file-00000000565071f88c511f6e22d1cf0c.png',
     description: 'Trendy men pendant jewellery with a bold and stylish look. Great for daily wear and gifting.'
+  },
+  {
+    id: 11,
+    name: 'Heavy Embroidery Georgette Saree with Stone Work',
+    price: 899,
+    category: 'Sarees',
+    image: 'https://i.ibb.co/5XkyX0Vp/file-00000000bdf0821186c8bf4ed37f1769.png',
+    images: [                            
+    'https://i.ibb.co/cKgH6163/file-0000000083448211ac36eb1b6f9be7dd.png'
+  ],
+    description: 'Elegant maroon georgette saree with heavy gold embroidery, full stone handwork and a beautifully designed border. Comes with matching blouse piece — perfect for weddings and festive occasions.'
+  },
+  {
+    id: 12,
+    name: 'Heavy Embroidery Georgette Saree with Stone Work - Royal Blue',
+    price: 899,
+    category: 'Sarees',
+    image: 'https://i.ibb.co/ZzgfDWJh/file-000000004dfc820892ea1304bcd385e4.png',
+    images: [                            
+    'https://i.ibb.co/YTZVJKD5/file-00000000cce08208b79ac14b59241d1a.png'
+  ],
+    description: 'Elegant royal blue georgette saree with heavy gold embroidery, full stone handwork and a beautifully designed border. Comes with matching blouse piece — perfect for weddings and festive occasions.'
+  },
+  {
+    id: 13,
+    name: 'Heavy Embroidery Georgette Saree with Stone Work - Bottle Green',
+    price: 899,
+    category: 'Sarees',
+    image: 'https://i.ibb.co/LdK30bXM/file-0000000093d48211b877163450eb1683.png',
+    images: [                            
+    'https://i.ibb.co/JwsRDFxF/file-00000000e3fc82088dbea29654ca9f2b.png'
+  ],
+    description: 'Elegant bottle green georgette saree with heavy gold embroidery, full stone handwork and a beautifully designed border. Comes with matching blouse piece — perfect for weddings and festive occasions.'
+  },
+  {
+    id: 14,
+    name: 'Heavy Stone Work Embroidery Saree - Black',
+    price: 899,
+    category: 'Sarees',
+    image: 'https://i.ibb.co/jZPzPJBw/file-00000000b7648211a37d5c7599d5c2af.png',
+    images: [                            
+    'https://i.ibb.co/sMvcvHh/file-00000000f8a482119f954666846651df.png'
+  ],
+    description: 'Stunning black georgette saree with rich copper-tone circular embroidery and stone handwork along the border. Comes with matching blouse piece — perfect for parties and festive occasions.'
+  },
+  {
+    id: 15,
+    name: 'CutWork Hotfix Fancy Traditional Saree - Purple',
+    price: 699,
+    category: 'Sarees',
+    image: 'https://i.ibb.co/C3MxgvZW/file-00000000571c8208af0ef1c5780dfe11.png',
+    images: [                            
+    'https://i.ibb.co/Qvrmyv59/file-0000000074dc82089ec40afc68ee5e38.png'
+  ],
+    description: 'Trendy deep purple saree with hotfix stonework and elegant cutwork leaf border. Lightweight georgette fabric with an all-over shimmer finish — great for parties and daily festive wear.'
   }
 ];
 
