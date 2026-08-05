@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ShoppingCart, Check } from 'lucide-react';
+import { X, ShoppingCart, Check, ZoomIn } from 'lucide-react';
 import type { Product } from '../types';
 
 interface ProductModalProps {
@@ -11,6 +11,7 @@ interface ProductModalProps {
 
 export default function ProductModal({ product, onClose, onAddToCart }: ProductModalProps) {
   const [activeImage, setActiveImage] = useState(0);
+  const [zoomOpen, setZoomOpen] = useState(false);
 
   if (!product) return null;
 
@@ -45,12 +46,20 @@ export default function ProductModal({ product, onClose, onAddToCart }: ProductM
 
           <div className="grid sm:grid-cols-2">
             <div>
-              <div className="h-64 sm:h-80 bg-slate-50 flex items-center justify-center p-6">
+              <div className="relative h-72 sm:h-96 bg-slate-50 flex items-center justify-center p-6">
                 <img
                   src={currentImg}
                   alt={product.name}
-                  className="max-h-full max-w-full object-contain"
+                  onClick={() => setZoomOpen(true)}
+                  className="max-h-full max-w-full object-contain cursor-zoom-in active:scale-[0.98] transition-transform"
                 />
+                <button
+                  onClick={() => setZoomOpen(true)}
+                  className="absolute bottom-3 right-3 p-2 rounded-full bg-white/90 shadow text-slate-700 hover:bg-white"
+                  aria-label="Zoom image"
+                >
+                  <ZoomIn size={18} />
+                </button>
               </div>
               {gallery.length > 1 && (
                 <div className="flex gap-2 px-6 pb-4 overflow-x-auto">
@@ -108,6 +117,30 @@ export default function ProductModal({ product, onClose, onAddToCart }: ProductM
           </div>
         </motion.div>
       </motion.div>
+
+      {zoomOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setZoomOpen(false)}
+          className="fixed inset-0 z-[70] bg-black/95 flex items-center justify-center p-4 overflow-auto touch-pinch-zoom"
+        >
+          <button
+            onClick={() => setZoomOpen(false)}
+            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+            aria-label="Close zoom"
+          >
+            <X size={26} />
+          </button>
+          <img
+            src={currentImg}
+            alt={product.name}
+            onClick={(e) => e.stopPropagation()}
+            className="max-w-none w-auto h-auto min-w-full sm:min-w-0 sm:max-h-[95vh] sm:max-w-[95vw] object-contain"
+          />
+        </motion.div>
+      )}
     </AnimatePresence>
   );
-                }
+}
