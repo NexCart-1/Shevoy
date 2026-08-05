@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShoppingCart, Check } from 'lucide-react';
 import type { Product } from '../types';
@@ -9,7 +10,14 @@ interface ProductModalProps {
 }
 
 export default function ProductModal({ product, onClose, onAddToCart }: ProductModalProps) {
+  const [activeImage, setActiveImage] = useState(0);
+
   if (!product) return null;
+
+  const gallery = product.images && product.images.length > 0
+    ? Array.from(new Set([product.image, ...product.images]))
+    : [product.image];
+  const currentImg = gallery[activeImage] ?? gallery[0];
 
   return (
     <AnimatePresence>
@@ -36,12 +44,29 @@ export default function ProductModal({ product, onClose, onAddToCart }: ProductM
           </button>
 
           <div className="grid sm:grid-cols-2">
-            <div className="h-64 sm:h-auto bg-slate-50 flex items-center justify-center p-6">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="max-h-full max-w-full object-contain"
-              />
+            <div>
+              <div className="h-64 sm:h-80 bg-slate-50 flex items-center justify-center p-6">
+                <img
+                  src={currentImg}
+                  alt={product.name}
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+              {gallery.length > 1 && (
+                <div className="flex gap-2 px-6 pb-4 overflow-x-auto">
+                  {gallery.map((img, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActiveImage(i)}
+                      className={`shrink-0 h-14 w-14 rounded-lg overflow-hidden border-2 transition-colors ${
+                        activeImage === i ? 'border-gold-dark' : 'border-transparent opacity-70 hover:opacity-100'
+                      }`}
+                    >
+                      <img src={img} alt={`${product.name} ${i + 1}`} className="h-full w-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
             <div className="p-6 sm:p-8 flex flex-col justify-center">
               <div className="inline-flex self-start px-3 py-1 bg-gold/15 text-bronze text-xs font-bold rounded-full mb-3">
@@ -85,4 +110,4 @@ export default function ProductModal({ product, onClose, onAddToCart }: ProductM
       </motion.div>
     </AnimatePresence>
   );
-}
+                }
